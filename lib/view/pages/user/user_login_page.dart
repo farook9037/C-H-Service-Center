@@ -1,14 +1,15 @@
+import 'package:c_h_service_center/view/pages/user/user_home_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class AdminLoginPage extends StatefulWidget {
-  const AdminLoginPage({Key? key}) : super(key: key);
+class UserLoginPage extends StatefulWidget {
+  const UserLoginPage({Key? key}) : super(key: key);
 
   @override
-  State<AdminLoginPage> createState() => _AdminLoginPageState();
+  State<UserLoginPage> createState() => _LoginPageState();
 }
 
-class _AdminLoginPageState extends State<AdminLoginPage> {
+class _LoginPageState extends State<UserLoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -20,19 +21,25 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
     });
   }
 
-  void _login() {
-    // Add admin login logic here
+  void _login(dynamic page) {
+    // Add your login logic here
     if (kDebugMode) {
-      print(
-          'Admin login with username: ${_usernameController.text} and password: ${_passwordController.text}');
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const UserHomeScreen(),
+          ));
     }
   }
 
-  void _signup() {
-    // Add admin signup logic here
+  void _signup(dynamic page) {
+    // Add your signup logic here
     if (kDebugMode) {
-      print(
-          'Admin signup with username: ${_usernameController.text} and password: ${_passwordController.text}');
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const UserHomeScreen(),
+          ));
     }
   }
 
@@ -40,7 +47,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_isLogin ? 'Admin Login' : 'Admin Signup'),
+        title: Text(_isLogin ? 'User Login' : 'User Signup'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -51,11 +58,11 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
               TextFormField(
                 controller: _usernameController,
                 decoration: const InputDecoration(
-                  labelText: 'Admin Username',
+                  labelText: 'Username',
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your admin username';
+                    return 'Please enter your username';
                   }
                   return null;
                 },
@@ -63,12 +70,12 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
               TextFormField(
                 controller: _passwordController,
                 decoration: const InputDecoration(
-                  labelText: 'Admin Password',
+                  labelText: 'Password',
                 ),
                 obscureText: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your admin password';
+                    return 'Please enter your password';
                   }
                   return null;
                 },
@@ -80,19 +87,19 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     if (_isLogin) {
-                      _login();
+                      _login(const UserHomeScreen());
                     } else {
-                      _signup();
+                      _signup(const UserHomeScreen());
                     }
                   }
                 },
-                child: Text(_isLogin ? 'Admin Login' : 'Admin Signup'),
+                child: Text(_isLogin ? 'Login' : 'Signup'),
               ),
               TextButton(
                 onPressed: _toggleLogin,
                 child: Text(_isLogin
-                    ? 'Don\'t have an admin account? Signup'
-                    : 'Already have an admin account? Login'),
+                    ? 'Don\'t have an account? Signup'
+                    : 'Already have an account? Login'),
               ),
             ],
           ),

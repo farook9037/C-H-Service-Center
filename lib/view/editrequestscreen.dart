@@ -1,4 +1,4 @@
-import 'package:c_h_service_center/Service_Request.dart';
+import 'package:c_h_service_center/view/Service_Request.dart';
 import 'package:flutter/material.dart';
 
 class EditRequestScreen extends StatelessWidget {

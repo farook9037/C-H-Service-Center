@@ -11,7 +11,10 @@ class ServiceRequest {
     required this.serviceName,
     required this.description,
     required this.date,
+    required bool filterByUser,
   });
+
+  copyWith({required String serviceName, required String description}) {}
 }
 
 class ServiceRequestProvider with ChangeNotifier {
@@ -24,4 +27,6 @@ class ServiceRequestProvider with ChangeNotifier {
 
     notifyListeners();
   }
+
+  void updateRequest(copyWith) {}
 }

@@ -1,13 +1,15 @@
+import 'package:c_h_service_center/view/pages/admin/admin_login_page.dart';
+import 'package:c_h_service_center/view/pages/user/user_login_page.dart';
 import 'package:flutter/material.dart';
 
-class Popupscreen extends StatefulWidget {
-  const Popupscreen({Key? key}) : super(key: key);
+class SpashScreen extends StatefulWidget {
+  const SpashScreen({Key? key}) : super(key: key);
 
   @override
-  State<Popupscreen> createState() => _HomePageState();
+  State<SpashScreen> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<Popupscreen> {
+class _HomePageState extends State<SpashScreen> {
   @override
   void initState() {
     super.initState();
@@ -61,44 +63,6 @@ class _HomePageState extends State<Popupscreen> {
         child: Text(
           'Welcome to the App',
           style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-
-class UserLoginPage extends StatelessWidget {
-  const UserLoginPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('User Login')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // User login logic here
-          },
-          child: const Text('User Login'),
-        ),
-      ),
-    );
-  }
-}
-
-class AdminLoginPage extends StatelessWidget {
-  const AdminLoginPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Admin Login')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Admin login logic here
-          },
-          child: const Text('Admin Login'),
         ),
       ),
     );
